@@ -4,8 +4,9 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
-  <div class="order-summary jumbotron order">
+  <div class="order-summary order">
     <h4>Thank you for your order!</h4>
+    <h5>An email confirmation has been sent to <%= @order.email %> </h5>
     <table class="table table-bordered">
         <thead>
           <tr>
