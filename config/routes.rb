@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   get '/users' => 'users#create'
 
-  resources :users, only: [:create]
-  resources :signup, only: [:new]
-
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
   resources :about, only: [:index]
