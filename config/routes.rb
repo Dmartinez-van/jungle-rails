@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # Routes for showing visitors a signup form, and creating a new user
   get '/signup' => 'users#new'
-  get '/users' => 'users#create'
+  post '/users' => 'users#create'
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
