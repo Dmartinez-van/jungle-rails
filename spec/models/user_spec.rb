@@ -67,7 +67,6 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-
     before :each do
       @user1 = User.create(
         name: 'dave',
@@ -84,7 +83,6 @@ RSpec.describe User, type: :model do
     it 'should authenticate properly regardless of case' do
       expect(User.authenticate_with_credentials('tEst33@tESt.com', 'wow123')).to eq(@user1)
     end
-    
 
   end
 end
