@@ -8,13 +8,14 @@ RSpec.describe User, type: :model do
     end
 
     it 'should be valid with valid fields' do
-      @user1 = User.new
-      @user1.name = 'dave'
-      @user1.email = 'test@test.com'
-      @user1.password = 'wow123'
-      @user1.password_confirmation = 'wow123'
+      user1 = User.new(
+        name: 'dave',
+        email: 'test@test.com',
+        password: 'wow123',
+        password_confirmation: 'wow123',
+      )
       
-      expect(@user1).to be_valid
+      expect(user1).to be_valid
     end
 
     it 'should not be valid if password and password_confirmation are not equal' do
@@ -25,6 +26,8 @@ RSpec.describe User, type: :model do
       @user1.password_confirmation = 'notTheSame'
       
       expect(@user1).to_not be_valid
+
+      p @user1.errors.full_messages
     end
 
     it 'should not be valid if email already exists in database' do
@@ -42,6 +45,8 @@ RSpec.describe User, type: :model do
       
       expect(@user1).to be_valid
       expect(@user2).to_not be_valid
+
+      
     end
 
     it 'should not be valid if no name' do
@@ -95,4 +100,19 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  # describe '.authenticate_with_credentials' do
+  #   @user1 = User.new
+  #   @user1.name = 'dave'
+  #   @user1.email = 'test@test.com'
+  #   @user1.password = '123456'
+  #   @user1.password_confirmation = '123456'
+
+  #   it 'should return the correct user when provided with the correct password' do
+  #     user = User.authenticate_with_credentials("test@test.com", '123456')
+
+  #     expect(user).to be_valid
+  #   end
+      
+  # end
 end
