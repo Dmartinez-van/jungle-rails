@@ -8,5 +8,8 @@ class User < ActiveRecord::Base
   def authenticate_with_credentials(email, password)
     
   end
+
+  def potato
+  end
   
 end
