@@ -71,7 +71,7 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate_with_credentials' do
 
-    
+
 
   end
 
