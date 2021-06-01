@@ -36,8 +36,6 @@ RSpec.describe User, type: :model do
       )
       expect(@user1).to be_valid
       expect(user2).to_not be_valid
-      p user2.errors.full_messages
-
     end
 
     it 'should not be valid if no name' do
@@ -68,11 +66,25 @@ RSpec.describe User, type: :model do
 
   end
 
-
   describe '.authenticate_with_credentials' do
 
+    before :each do
+      @user1 = User.create(
+        name: 'dave',
+        email: 'Test33@test.com',
+        password: 'wow123',
+        password_confirmation: 'wow123',
+      )
+    end
+    
+    it 'should authenticate properly with leading and trailing spaces for email' do
+      expect(User.authenticate_with_credentials('  test33@test.com ', 'wow123')).to eq(@user1)
+    end
+
+    it 'should authenticate properly regardless of case' do
+      expect(User.authenticate_with_credentials('tEst33@tESt.com', 'wow123')).to eq(@user1)
+    end
     
 
   end
-
 end
