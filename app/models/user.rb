@@ -6,10 +6,13 @@ class User < ActiveRecord::Base
   validates_length_of :password, presence: true, minimum: 6
 
   def authenticate_with_credentials(email, password)
-    
-  end
-
-  def potato
+    @user = User.find_by_email(email)
+    # If the user exists and the password entered is correct
+    if @user && @user.authenticate(password)
+      @user 
+    else
+      nil
+    end
   end
   
 end
